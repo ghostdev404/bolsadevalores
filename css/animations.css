@@ -1,0 +1,181 @@
+/* ================================================================
+   BOLSA & POLÍTICA — Animations & Micro-interactions
+   ================================================================ */
+
+/* ====== Keyframes ====== */
+
+/* Live pulse indicator */
+@keyframes live-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Fade in from bottom */
+@keyframes fade-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in from left */
+@keyframes fade-slide-right {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale in */
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Ticker scrolling */
+@keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Counter flash — price change */
+@keyframes flash-green {
+    0% { background: rgba(34, 197, 94, 0.3); }
+    100% { background: transparent; }
+}
+
+@keyframes flash-red {
+    0% { background: rgba(239, 68, 68, 0.3); }
+    100% { background: transparent; }
+}
+
+/* Gauge needle swing */
+@keyframes gauge-swing {
+    0% { transform: rotate(-90deg); }
+    100% { transform: rotate(var(--gauge-angle, 0deg)); }
+}
+
+/* Spin loader */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Ambient background float */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Number count up */
+@keyframes number-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* ====== Animation Utility Classes ====== */
+
+.fade-in {
+    animation: fade-slide-up 0.45s var(--transition-base) forwards;
+    opacity: 0;
+}
+
+.fade-in-right {
+    animation: fade-slide-right 0.4s var(--transition-base) forwards;
+    opacity: 0;
+}
+
+.scale-in {
+    animation: scale-in 0.35s var(--transition-base) forwards;
+    opacity: 0;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* Price change flash */
+.price-flash-up {
+    animation: flash-green 0.8s ease-out;
+}
+
+.price-flash-down {
+    animation: flash-red 0.8s ease-out;
+}
+
+/* Number pop on update */
+.number-pop {
+    animation: number-pop 0.3s ease-out;
+}
+
+/* Spin loader */
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Float effect */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ====== Transition Helpers ====== */
+
+.transition-all {
+    transition: all var(--transition-base);
+}
+
+.transition-fast {
+    transition: all var(--transition-fast);
+}
+
+.transition-slow {
+    transition: all var(--transition-slow);
+}
+
+/* ====== Reduced Motion ====== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .ticker-track {
+        animation: none;
+    }
+}

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impacto da Política em Tempo Real na Bolsa de Valores B3 desde 25 de Setembro. Cotações ao vivo, IBOVESPA, Petrobras, Vale e risco político.">
+    <title>Bolsa & Política | Impacto em Tempo Real na B3 (Desde 25/09)</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><polyline points='20,70 45,40 65,55 85,25' stroke='%233b82f6' stroke-width='10' fill='none'/></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <!-- ====== BARRA SUPERIOR DE ANÚNCIO ====== -->
+    <div class="top-announcement">
+        <span>Monitor de Risco Político & Mercado B3. Período analisado: <strong>25 de Setembro a 17 de Outubro de 2026 (Tempo Real)</strong>. <a href="#timeline-track" class="top-announcement-link">Ver linha do tempo &rarr;</a></span>
+    </div>
+
+    <!-- ====== CABEÇALHO PRINCIPAL ====== -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-wrapper">
+                <span class="brand-title">Bolsa & Política</span>
+                <span class="brand-by">by <em>pandora</em></span>
+            </div>
+            <div class="header-socials">
+                <a href="#" aria-label="X (Twitter)" id="icon-x"></a>
+                <a href="#" aria-label="Instagram" id="icon-instagram"></a>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <nav class="nav-segmented" id="main-nav-segmented">
+                <button class="nav-segment-btn active" data-chart-asset="IBOV">IBOVESPA</button>
+                <button class="nav-segment-btn" data-chart-asset="PETR4">Petrobras (PETR4)</button>
+                <button class="nav-segment-btn" data-chart-asset="VALE3">Vale (VALE3)</button>
+                <button class="nav-segment-btn" data-chart-asset="BBAS3">Banco do Brasil</button>
+                <button class="nav-segment-btn" data-chart-asset="ELET3">Eletrobras</button>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="header-live-chip">
+                <span class="chip-label">IBOV</span>
+                <span class="chip-val" id="header-ibov-val">129.650</span>
+                <span class="chip-change pos" id="header-ibov-change">+0,54%</span>
+            </div>
+            <div class="header-live-chip">
+                <span class="chip-label">USD</span>
+                <span class="chip-val" id="header-usd-val">R$ 5,06</span>
+                <span class="chip-change neg" id="header-usd-change">-0,69%</span>
+            </div>
+            <button class="header-search-btn" id="btn-search-trigger">
+                <span id="icon-search-btn"></span>
+                <span>Buscar</span>
+                <kbd>Ctrl K</kbd>
+            </button>
+            <button class="header-icon-btn" id="btn-fullscreen-trigger" title="Tela Cheia">
+                <span id="icon-maximize-btn"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ====== CONTAINER DO PAINEL ====== -->
+    <main class="dashboard-container">
+
+        <!-- ====== BALANÇO DE FORÇAS DA B3 (Estatais vs Privadas desde 25/09) ====== -->
+        <section class="market-forces-banner" id="market-forces-banner">
+            <!-- Esquerda: Estatais B3 (Sensibilidade Política) -->
+            <div class="force-side side-left">
+                <div class="force-icon-wrap icon-wrap-estatais">
+                    <span id="icon-duel-landmark"></span>
+                </div>
+                <div class="force-info">
+                    <div class="force-title-row">
+                        <span class="force-name">Estatais B3</span>
+                        <span class="force-tag tag-estatais">Risco Regulatório</span>
+                    </div>
+                </div>
+                <div class="force-bar-pill pill-estatais">
+                    <span class="pill-pct" id="estatais-score-pct">+4,85%</span>
+                    <span class="pill-tickers">PETR4 · BBAS3 · ELET3</span>
+                </div>
+            </div>
+
+            <!-- Centro: Termômetro Político-Fiscal & IBOVESPA -->
+            <div class="force-center-msg">
+                <div class="force-headline-text">
+                    Balanço de Forças na <span class="highlight-blue">B3</span> desde <span class="highlight-gold">25/09</span>
+                </div>
+                <div class="threshold-divider">
+                    <div class="threshold-line"></div>
+                    <span class="threshold-badge">IBOVESPA +3,45% (Equilíbrio Fiscal)</span>
+                </div>
+            </div>
+
+            <!-- Direita: Privadas & Exportadoras (Mercado Global) -->
+            <div class="force-side side-right">
+                <div class="force-bar-pill pill-privadas">
+                    <span class="pill-tickers">VALE3 · ITUB4 · WEGE3</span>
+                    <span class="pill-pct" id="privadas-score-pct">+6,12%</span>
+                </div>
+                <div class="force-info">
+                    <div class="force-title-row">
+                        <span class="force-tag tag-privadas">Mercado Global</span>
+                        <span class="force-name">Privadas & Agro</span>
+                    </div>
+                </div>
+                <div class="force-icon-wrap icon-wrap-privadas">
+                    <span id="icon-duel-trending"></span>
+                </div>
+            </div>
+
+            <!-- Selo Pregão B3 em Tempo Real -->
+            <div class="b3-live-stamp">
+                <span class="dot"></span>
+                <span><strong>Pregão B3</strong> cotações ao vivo</span>
+            </div>
+        </section>
+
+        <!-- ====== PALCO PRINCIPAL (Grade de 3 Colunas) ====== -->
+        <div class="main-stage-grid">
+
+            <!-- ===== COLUNA ESQUERDA: AÇÕES MONITORADAS ===== -->
+            <aside class="col-sidebar-left">
+                
+                <!-- Card: Ações em Foco -->
+                <div class="panel-card">
+                    <div class="brasil-meta-header">
+                        <h3>Ações em Foco (Desde 25/09)</h3>
+                        <div class="brasil-sub-row">
+                            <span>Período: <strong>25 de Setembro a Hoje</strong></span>
+                            <span>Correlação: <strong>Fatos Políticos de Brasília</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="stocks-list" id="stock-list-container">
+                        <!-- Renderizado via JS -->
+                    </div>
+
+                    <div class="stocks-footer-note">
+                        Mais 42 ações monitoradas no IBOVESPA
+                    </div>
+
+                    <a href="#spotlight-modal" class="all-stocks-link" id="link-all-stocks">
+                        Buscar qualquer ação na B3 (Ctrl K) &rarr;
+                    </a>
+                </div>
+
+                <!-- Card: Ao Longo do Período (IBOVESPA vs Dólar) -->
+                <div class="panel-card">
+                    <div class="chart-card-header">
+                        <h3>Ao longo do período (Desde 25/09)</h3>
+                        <div class="chart-legend-row">
+                            <div class="legend-item">
+                                <span class="legend-line line-pl"></span>
+                                <span>IBOVESPA (+3,45%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-line line-pt"></span>
+                                <span>Dólar (-1,82%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evolution-chart-box">
+                        <canvas id="evolution-canvas"></canvas>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ===== COLUNA CENTRAL: GRANDE GRÁFICO / MAPA (Palco Principal) ===== -->
+            <section class="col-stage-center">
+                
+                <!-- Abas Superiores -->
+                <div class="map-view-header">
+                    <div class="map-pills-nav">
+                        <button class="map-pill-btn active" id="btn-tab-chart">Gráfico de Impacto</button>
+                        <button class="map-pill-btn" id="btn-tab-map">Mapa Regional B3</button>
+                    </div>
+
+                    <div class="map-pills-nav">
+                        <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #22c55e; padding: 0.2rem 0.65rem;" id="active-asset-badge">
+                            IBOVESPA: 129.650 pts (+3,45%)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Central Principal: Visual Expansivo, Limpo e Fluido -->
+                <div class="interactive-map-card" id="main-visual-stage" style="min-height: 540px; position: relative;">
+                    
+                    <!-- Modo 1: Gráfico Financeiro B3 com Pinos de Eventos -->
+                    <div id="view-chart-container" style="width: 100%; height: 420px; position: relative;">
+                        <canvas id="market-main-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                        <!-- Pinos de Fatos Políticos renderizados sobre o gráfico -->
+                        <div id="chart-pins-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+                    </div>
+
+                    <!-- Modo 2: Mapa Regional B3 (Oculto por padrão, acionado pela aba) -->
+                    <div id="view-map-container" style="width: 100%; height: 420px; display: none; align-items: center; justify-content: center;">
+                        <svg id="brazil-svg" class="svg-map-viewport" viewBox="0 0 700 700">
+                            <g id="states-layer"></g>
+                            <g id="labels-layer"></g>
+                        </svg>
+                    </div>
+
+                    <!-- Overlay Inferior Esquerdo (Legenda e Escala) -->
+                    <div class="map-overlay-legend">
+                        <div class="legend-party-row">
+                            <span class="party-square sq-pl"></span>
+                            <span>Privadas +6,12%</span>
+                        </div>
+                        <div class="legend-party-row">
+                            <span class="party-square sq-pt"></span>
+                            <span>Estatais +4,85%</span>
+                        </div>
+                        <div style="font-size: 0.68rem; color: #64748b; margin-top: 0.2rem;">
+                            Volatilidade política na B3 desde 25/09
+                        </div>
+                    </div>
+
+                    <!-- Timeline Player Inferior Central (25 de Setembro até Hoje) -->
+                    <div class="map-timeline-player" style="position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); width: 440px;">
+                        <button class="player-btn-toggle" id="btn-player-toggle" title="Reproduzir / Pausar Cronologia">
+                            <span id="icon-player-pause"></span>
+                        </button>
+                        <span class="timeline-time-val" id="timeline-time-display">25 Set</span>
+                        <div class="timeline-scrubber" id="timeline-track" style="flex: 1;">
+                            <div class="scrubber-fill" id="timeline-fill" style="width: 100%;"></div>
+                            <div class="scrubber-thumb" id="timeline-thumb" style="left: 100%;"></div>
+                        </div>
+                        <div class="timeline-markers" style="font-family: var(--font-mono); font-size: 0.72rem;">
+                            <span>Hoje</span>
+                        </div>
+                        <span style="font-size: 0.72rem; color: #94a3b8; white-space: nowrap;">1 pessoa agora</span>
+                        <div class="live-indicator-pill">
+                            <span class="pulse-dot"></span>
+                            <span>Ao vivo</span>
+                        </div>
+                    </div>
+
+                    <!-- Controles de Zoom Inferior Direito -->
+                    <div class="map-zoom-controls">
+                        <button class="zoom-btn" id="btn-zoom-in" title="Aumentar Zoom">
+                            <span id="icon-zoom-plus"></span>
+                        </button>
+                        <button class="zoom-btn" id="btn-zoom-out" title="Diminuir Zoom">
+                            <span id="icon-zoom-minus"></span>
+                        </button>
+                    </div>
+
+                    <!-- Tooltip Flutuante de Fato Político & B3 -->
+                    <div class="state-detail-tooltip" id="state-detail-tooltip" style="z-index: 100; pointer-events: none;">
+                        <div class="tooltip-header">
+                            <span class="tooltip-title" id="tooltip-event-date">25 de Setembro de 2026</span>
+                            <span class="tooltip-badge badge-pl" id="tooltip-event-badge">Fato Político</span>
+                        </div>
+                        <div style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;" id="tooltip-event-title">
+                            Governo envia ajustes fiscais
+                        </div>
+                        <p style="font-size: 0.75rem; color: #94a3b8; line-height: 1.4; margin-bottom: 0.65rem;" id="tooltip-event-desc">
+                            Investidores acompanham medidas de controle orçamentário.
+                        </p>
+                        <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 6px; padding: 0.5rem;">
+                            <span style="font-size: 0.68rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; display: block;">Reação da B3</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #22c55e;" id="tooltip-event-reaction">
+                                IBOVESPA recua -1,45% e Dólar vai a R$ 5,14
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== COLUNA DIREITA: SETORES & ATUALIZAÇÕES ===== -->
+            <aside class="col-sidebar-right">
+                
+                <!-- Card: Por Setor da B3 -->
+                <div class="panel-card">
+                    <div class="region-card-header">
+                        <h3>Por setor da B3 (Desde 25/09)</h3>
+                    </div>
+                    <div class="regions-list" id="sectors-container">
+                        <!-- Setores renderizados via JS -->
+                    </div>
+                </div>
+
+                <!-- Card: Fatos Políticos & Reação da B3 -->
+                <div class="panel-card">
+                    <div class="updates-card-header">
+                        <h3>Fatos Políticos & Reação da B3</h3>
+                    </div>
+                    <div class="live-updates-feed" id="live-feed-container">
+                        <!-- Feed de eventos via JS -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- ====== BARRA INFERIOR DE COTAÇÕES B3 (TICKER TAPE) ====== -->
+    <footer class="bottom-ticker-bar">
+        <div class="ticker-source-tag">
+            <span id="icon-ticker-shield"></span>
+            <span>B3 Ao Vivo</span>
+        </div>
+        <div class="ticker-scroll-wrapper">
+            <div class="ticker-track-inner" id="ticker-track-inner">
+                <!-- Cotações oficiais em tempo real via JS -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== SPOTLIGHT SEARCH MODAL (Ctrl + K) ====== -->
+    <div class="spotlight-modal-overlay" id="spotlight-modal">
+        <div class="spotlight-card">
+            <div class="spotlight-input-row">
+                <span id="icon-spotlight-search"></span>
+                <input type="text" class="spotlight-input" id="spotlight-input" placeholder="Buscar ação (PETR4, VALE3) ou fato político desde 25/09..." autocomplete="off">
+            </div>
+            <div class="spotlight-results-list" id="spotlight-results">
+                <!-- Resultados da busca instantânea -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts em ordem estrita de dependências -->
+    <script src="js/icons.js"></script>
+    <script src="js/market-data.js"></script>
+    <script src="js/map-data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
